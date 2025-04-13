@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin-dashboard">
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        
+        <div class="admin-actions">
+            <div class="admin-card" data-url="{{ url_for('admin.map_editor') }}?map=campus">
+                <h3>Campus Map</h3>
+                <p>Edit nodes and paths for the campus map</p>
+            </div>
+            
+            {% for building in ['A', 'B', 'C', 'AD'] %}
+            <div class="admin-card" data-url="{{ url_for('admin.map_editor') }}?map=building_{{ building }}">
+                <h3>Building {{ building }}</h3>
+                <p>Edit floor plans and navigation nodes</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle card clicks with event delegation
+    document.querySelectorAll('.admin-card').forEach(card => {
+        card.addEventListener('click', function() {
+            window.location.href = this.dataset.url;
+        });
+        
+        // Add hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}Waypoint Navigator{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/waypoint.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="waypoint-section">
+    <div class="container">
+        <h1>Waypoint Navigator</h1>
+        
+        <div class="waypoint-controls">
+            <div class="selection-group">
+                <div class="form-group">
+                    <label for="current-location">Current Location</label>
+                    <select id="current-location" class="form-select">
+                        <option value="">Select your location</option>
+                        <optgroup label="Campus Areas">
+                            {% for node in campus_nodes %}
+                            <option value="{{ node.id }}">{{ node.name }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Buildings">
+                            {% for building in buildings %}
+                            <option value="building_{{ building }}_entrance">{{ building }} Building Entrance</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <select id="destination" class="form-select">
+                        <option value="">Select destination</option>
+                        <optgroup label="Campus Areas">
+                            {% for node in campus_nodes %}
+                            <option value="{{ node.id }}">{{ node.name }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Buildings">
+                            {% for building in buildings %}
+                            <option value="building_{{ building }}_entrance">{{ building }} Building Entrance</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="find-path" class="btn btn-primary" disabled>Find Path</button>
+            <button id="reset-path" class="btn btn-secondary">Reset</button>
+        </div>
+        
+        <div class="map-container">
+            <div id="waypoint-map" class="map-display">
+                {% include 'maps/campus.svg' %}
+            </div>
+        </div>
+        
+        <div id="path-results" class="path-results" style="display: none;">
+            <h3>Directions</h3>
+            <div id="directions" class="directions-list"></div>
+            <div class="path-summary">
+                <p>Total Distance: <span id="total-distance">0</span> meters</p>
+                <p>Estimated Time: <span id="estimated-time">0</span> minutes</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/waypoint.js') }}"></script>
+<script>
+    // Safe JSON parsing with fallback
+    try {
+        window.pathfinderData = {
+            campusNodes: JSON.parse('{{ campus_nodes | tojson | safe }}') || [],
+            buildings: JSON.parse('{{ buildings | tojson | safe }}') || []
+        };
+    } catch (error) {
+        console.error('Error parsing navigation data:', error);
+        window.pathfinderData = {
+            campusNodes: [],
+            buildings: []
+        };
+    }
+</script>
+{% endblock %}

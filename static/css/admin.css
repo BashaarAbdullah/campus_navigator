@@ -1,0 +1,45 @@
+.admin-dashboard {
+    padding: 40px 0;
+}
+
+.admin-dashboard h1 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.admin-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.admin-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.admin-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.admin-card p {
+    color: var(--dark-gray);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-actions {
+        grid-template-columns: 1fr;
+    }
+}

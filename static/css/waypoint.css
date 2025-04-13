@@ -1,0 +1,117 @@
+.waypoint-section {
+    padding: 60px 0;
+}
+
+.waypoint-controls {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.selection-group {
+    display: flex;
+    gap: 20px;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex-grow: 1;
+    min-width: 250px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+}
+
+.path-results {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.directions-list {
+    margin: 20px 0;
+}
+
+.direction-step {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    gap: 15px;
+}
+
+.direction-step:last-child {
+    border-bottom: none;
+}
+
+.step-icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--light-purple);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex-grow: 1;
+}
+
+.path-summary {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.path-summary p {
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Highlight path on map */
+.path-highlight {
+    stroke: #ff5722;
+    stroke-width: 4px;
+    stroke-dasharray: none;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .selection-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .waypoint-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

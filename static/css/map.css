@@ -1,0 +1,66 @@
+.map-section {
+    padding: 60px 0;
+}
+
+.map-controls {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.map-view-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.selection-group {
+    display: flex;
+    gap: 10px;
+}
+
+.form-select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+.map-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-display {
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+}
+
+.map-display svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.btn.active {
+    background: var(--light-purple);
+    transform: none;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .map-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .map-display {
+        height: 400px;
+    }
+}

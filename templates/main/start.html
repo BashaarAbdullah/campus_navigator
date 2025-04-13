@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Campus Navigator</h1>
+        <p>Find your way around AWH Engineering College with ease</p>
+        <div class="auth-buttons">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Login</a>
+            <a href="{{ url_for('auth.signup') }}" class="btn btn-secondary">Sign Up</a>
+            <a href="{{ url_for('auth.admin_login') }}" class="btn btn-admin">Admin Login</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

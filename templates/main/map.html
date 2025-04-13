@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}Campus Maps{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="map-section">
+    <div class="container">
+        <h1>Campus Maps</h1>
+        
+        <div class="map-controls">
+            <div class="map-view-controls">
+                <button id="campus-view" class="btn btn-primary active">Campus View</button>
+                <button id="building-view" class="btn btn-secondary">Building View</button>
+            </div>
+            
+            <div id="building-selection" class="selection-group" style="display: none;">
+                <select id="building-select" class="form-select">
+                    <option value="">Select Building</option>
+                    <option value="A">Building A</option>
+                    <option value="B">Building B</option>
+                    <option value="C">Building C</option>
+                    <option value="AD">Administration Building</option>
+                </select>
+                
+                <select id="floor-select" class="form-select" disabled>
+                    <option value="">Select Floor</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div id="campus-map" class="map-display">
+                {% include 'maps/campus.svg' %}
+            </div>
+            
+            <div id="building-maps" class="map-display" style="display: none;">
+                <!-- Building maps will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}

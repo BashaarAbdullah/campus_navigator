@@ -1,0 +1,93 @@
+/* Loading spinner */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+.loading-spinner p {
+    margin-top: var(--space-md);
+    color: var(--dark-gray);
+}
+
+/* Toast notifications */
+.toast {
+    position: fixed;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 4px;
+    color: white;
+    z-index: 10000;
+    box-shadow: var(--shadow-lg);
+    max-width: 90%;
+    text-align: center;
+}
+
+.toast-info {
+    background: var(--primary-purple);
+}
+
+.toast-success {
+    background: var(--success-green);
+}
+
+.toast-error {
+    background: var(--error-red);
+}
+
+.toast-warning {
+    background: var(--warning-orange);
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: var(--space-lg);
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    animation: modalIn var(--transition-normal);
+}
+
+@keyframes modalIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
